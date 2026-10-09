@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1561.61">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang TC'}
+    span.s1 {font: 12.0px 'PingFang TC'}
+    span.s2 {font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;BagelChat <span class="s1">風格文字互動</span> - Gemini 3.8 Flash&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg: #121214;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card: #1e1e24;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent: #8b5cf6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text: #e4e4e7;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--subtext: #a1a1aa;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--danger: #ef4444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chat-container {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-left: 1px solid #27272a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-right: 1px solid #27272a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid #27272a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.character-info h2 { margin: 0; font-size: 1.1rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.character-info span { font-size: 0.85rem; color: var(--subtext); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header-actions {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat-bar { font-size: 0.9rem; font-weight: bold; color: #ec4899; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-reset {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #3f3f46;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--subtext);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 4px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn-reset:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color: var(--danger);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--danger);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.messages {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bubble {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 80%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>white-space: pre-wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.user {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-self: flex-end;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.assistant {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-self: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #27272a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.action-text {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #93c5fd;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.input-bar {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid #27272a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #3f3f46;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #18181b;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input:focus { border-color: var(--accent); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button.send-btn {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button.send-btn:hover { opacity: 0.9; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="chat-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="character-info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 id="char-name"&gt;<span class="s1">艾莉絲</span> (Iris)&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;<span class="s1">魔法學院的冷面圖書館管理員</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stat-bar" id="affection-display"&gt;<span class="s1">好感度</span>: 0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn-reset" onclick="resetSave()"&gt;<span class="s1">重置進度</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="messages" id="message-list"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="input-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="user-input" placeholder="<span class="s1">輸入你想說的話，或使用</span> *<span class="s1">描寫動作</span>*..." autocomplete="off"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="send-btn" id="send-btn" onclick="handleSend()"&gt;<span class="s1">發送</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// <span class="s1">填入你的</span> Google AI Studio API Key</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const STORAGE_KEY = "bagelchat_iris_save";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const charConfig = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>name: "<span class="s1">艾莉絲</span>",</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>systemPrompt: `</span>你現在是艾莉絲，魔法學院的圖書館員。外表冷漠毒舌，但其實內心容易動搖。</p>
+<p class="p3">對話時請包含心理描寫或肢體語言（用星號包覆，例如<span class="s2"> *</span>推了推眼鏡<span class="s2">*</span>）。</p>
+<p class="p1"><span class="s1">你的每次回覆末尾請嚴格附帶一個標籤以更新數值：</span>[Affection: +1]<span class="s1">、</span>[Affection: -1] <span class="s1">或</span> [Affection: 0]<span class="s1">。</span>`</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const initialMessages = [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>role: "assistant",</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>text: "*</span>抬起頭，推了推鼻樑上的金絲眼鏡，眼神冷淡地看著你。<span class="s2">*\n\n</span>現在已經是閉館時間了。如果你不是來還書的，就請不要在這裡閒晃打擾秩序。<span class="s2">"</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let affection = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let messages = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 1. <span class="s1">存檔與讀檔邏輯</span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function loadGame() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const savedData = localStorage.getItem(STORAGE_KEY);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (savedData) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const parsed = JSON.parse(savedData);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>affection = parsed.affection ?? 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>messages = parsed.messages ?? [...initialMessages];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("<span class="s1">存檔解析失敗，還原初始值</span>", e);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>resetState();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>resetState();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function saveGame() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const state = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>affection: affection,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>messages: messages</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>localStorage.setItem(STORAGE_KEY, JSON.stringify(state));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function resetState() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>affection = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>messages = JSON.parse(JSON.stringify(initialMessages));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function resetSave() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (confirm("<span class="s1">確定要重置所有對話與好感度嗎？</span>")) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>localStorage.removeItem(STORAGE_KEY);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>resetState();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 2. <span class="s1">介面渲染</span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function updateUI() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("affection-display").innerText = `<span class="s1">好感度</span>: ${affection}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const list = document.getElementById("message-list");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>list.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>messages.forEach(msg =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const bubble = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>bubble.className = `bubble ${msg.role}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const formatted = msg.text.replace(/\*(.*?)\*/g, '&lt;span class="action-text"&gt;* $1 *&lt;/span&gt;');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>bubble.innerHTML = formatted;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>list.appendChild(bubble);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>list.scrollTop = list.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 3. Gemini 3.8 Flash API <span class="s1">呼叫</span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function callGeminiApi(userMessage) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const historyContents = messages.map(m =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>role: m.role === "assistant" ? "model" : "user",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>parts: [{ text: m.text }]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>historyContents.push({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>role: "user",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>parts: [{ text: userMessage }]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>systemInstruction: {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>parts: [{ text: charConfig.systemPrompt }]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>contents: historyContents,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>generationConfig: {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>temperature: 0.8,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>maxOutputTokens: 500</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const response = await fetch(</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>method: "POST",</p>
+<p class="p1"><span class="Apple-converted-space">          </span>headers: { "Content-Type": "application/json" },</p>
+<p class="p1"><span class="Apple-converted-space">          </span>body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!response.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>throw new Error(`API <span class="s1">請求異常</span>: ${response.status} ${response.statusText}`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const data = await response.json();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rawReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "<span class="s1">（角色沉默不語</span>...<span class="s1">）</span>";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const match = rawReply.match(/\[Affection:\s*([+-]?\d+)\]/i);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (match) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>affection += parseInt(match[1], 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>return rawReply.replace(/\[Affection:\s*[+-]?\d+\]/i, "").trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.error(err);</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>return `*</span>眉頭微皺，似乎思緒中斷了一下。<span class="s2">*\n\n</span>（系統連線異常，請確認<span class="s2"> API Key </span>是否設定正確）<span class="s2">`;</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 4. <span class="s1">發送與事件處理</span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function handleSend() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const input = document.getElementById("user-input");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sendBtn = document.getElementById("send-btn");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const text = input.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!text || sendBtn.disabled) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>messages.push({ role: "user", text: text });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input.value = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>saveGame();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateUI();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>sendBtn.disabled = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reply = await callGeminiApi(text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>messages.push({ role: "assistant", text: reply });</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// <span class="s1">收到回覆後立刻更新並同步寫入</span> localStorage</p>
+<p class="p1"><span class="Apple-converted-space">    </span>saveGame();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateUI();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>sendBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("user-input").addEventListener("keypress", (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (e.key === "Enter") handleSend();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// <span class="s1">初始化啟動</span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>loadGame();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
